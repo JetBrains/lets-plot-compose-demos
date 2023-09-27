@@ -23,7 +23,6 @@ pluginManagement {
         id("org.jetbrains.compose").version(composeVersion)
 
         id("com.android.application").version(agpVersion)
-        id("com.android.library").version(agpVersion)
     }
 }
 
@@ -46,4 +45,5 @@ dependencyResolutionManagement {
     }
 }
 
+include("compose-android-min")
 include("compose-desktop")

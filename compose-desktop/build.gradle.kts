@@ -8,8 +8,8 @@ plugins {
     id("org.jetbrains.compose")
 }
 
-val letsPlotKotlinVersion = extra["letsPlotKotlin.version"] as String
 val letsPlotVersion = extra["letsPlot.version"] as String
+val letsPlotKotlinVersion = extra["letsPlotKotlin.version"] as String
 val letsPlotSkiaVersion = extra["letsPlotSkia.version"] as String
 
 dependencies {

@@ -38,7 +38,7 @@ fun main() = application {
                         .align(CenterVertically)
                         .width(IntrinsicSize.Max)
                 ) {
-                    Text("Demos:", fontWeight = FontWeight.Bold)
+                    Text("Plots:", fontWeight = FontWeight.Bold)
                     DemoList(
                         options = figures.unzip().first,
                         selectedIndex = figureIndex,
