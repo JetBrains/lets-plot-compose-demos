@@ -46,4 +46,5 @@ dependencyResolutionManagement {
 }
 
 include("compose-android-min")
+include("compose-android-median")
 include("compose-desktop")
