@@ -44,7 +44,7 @@ Build the project:
 ./gradlew build
 ```
 
-In the `Run configurations` drop-down menu:
+In the `Run configurations` toolbar:
 - Select `compose-android-min` or `compose-android-median` application
 - Select the `Android` device
 - Click `Run`
