@@ -37,7 +37,7 @@ From menu `Tools -> Android -> Device Manager` setup Android device.
 
 For example, Nexus 10 with Android 12 works well.
 
-### Running an Android Demo
+### Running a Demo
        
 Build the project:
 ```Kotlin
