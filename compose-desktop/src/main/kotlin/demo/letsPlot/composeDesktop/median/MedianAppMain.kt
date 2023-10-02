@@ -23,7 +23,7 @@ import demo.letsPlot.composeDesktop.median.util.createFigures
 import org.jetbrains.letsPlot.skia.compose.PlotPanel
 
 fun main() = application {
-    Window(onCloseRequest = ::exitApplication, title = "Density Plot (Compose Desktop)") {
+    Window(onCloseRequest = ::exitApplication, title = "Lets-Plot in Compose Desktop (median)") {
 
         val figures = createFigures()
 

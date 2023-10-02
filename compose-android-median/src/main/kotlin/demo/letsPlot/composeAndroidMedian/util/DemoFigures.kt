@@ -6,14 +6,17 @@
 package demo.letsPlot.composeAndroidMedian.util
 
 import org.jetbrains.letsPlot.Figure
+import org.jetbrains.letsPlot.Stat
 import org.jetbrains.letsPlot.geom.geomBar
 import org.jetbrains.letsPlot.geom.geomDensity
+import org.jetbrains.letsPlot.geom.geomPie
 import org.jetbrains.letsPlot.letsPlot
 
 fun createFigures(): List<Pair<String, Figure>> {
     return listOf(
         "Density" to densityPlot(),
         "Bar" to barPlot(),
+        "Pie" to piePlot(),
     )
 }
 
@@ -38,5 +41,17 @@ fun barPlot(): Figure {
                 x = "time"
                 color = "time"
                 fill = "time"
+            }
+}
+
+fun piePlot(): Figure {
+    val data = mapOf(
+        "name" to listOf('a', 'b', 'c', 'd', 'b'),
+        "value" to listOf(40, 90, 10, 50, 20)
+    )
+    return letsPlot(data) +
+            geomPie(stat = Stat.identity, size = 0.7, sizeUnit = "x") {
+                slice = "value"
+                fill = "name"
             }
 }

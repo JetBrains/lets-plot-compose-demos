@@ -19,7 +19,7 @@ import org.jetbrains.letsPlot.letsPlot
 import org.jetbrains.letsPlot.skia.compose.PlotPanel
 
 fun main() = application {
-    Window(onCloseRequest = ::exitApplication, title = "Density Plot (Compose Desktop)") {
+    Window(onCloseRequest = ::exitApplication, title = "Lets-Plot in Compose Desktop (min)") {
         MaterialTheme {
             Column(
                 modifier = Modifier.fillMaxSize().padding(start = 10.dp, top = 10.dp, end = 10.dp, bottom = 10.dp),
