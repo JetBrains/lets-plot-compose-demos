@@ -10,8 +10,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import ch.qos.logback.classic.android.BasicLogcatConfigurator
@@ -28,9 +29,8 @@ class MainActivity : ComponentActivity() {
 
             val figures = createFigures()
 
-            // ToDo: save/restore state
-            val preserveAspectRatio = remember { mutableStateOf(false) }
-            val figureIndex = remember { mutableStateOf(0) }
+            val preserveAspectRatio = rememberSaveable { mutableStateOf(false) }
+            val figureIndex = rememberSaveable { mutableIntStateOf(0) }
 
             MaterialTheme {
                 Column(
@@ -51,7 +51,7 @@ class MainActivity : ComponentActivity() {
                     }
 
                     PlotPanel(
-                        figure = figures[figureIndex.value].second,
+                        figure = figures[figureIndex.intValue].second,
                         preserveAspectRatio = preserveAspectRatio.value,
                         modifier = Modifier.fillMaxSize()
                     ) { computationMessages ->
