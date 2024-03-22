@@ -17,6 +17,10 @@ To run a Composer Desktop demo in IntelliJ IDEA simply navigate to [MinimalAppMa
 
 ### Setting up the Environment
 
+- #### Android Plugin
+
+Make sure the [Android plugin](https://plugins.jetbrains.com/plugin/22989-android) is installed.
+
 - #### Android SDK
 
 From menu `Tools -> Android -> SDK Manager` setup an Android SDK.
@@ -59,4 +63,4 @@ Please make sure you read it.
 
 Code and documentation released under
 the [MIT license](https://github.com/JetBrains/lets-plot-compose-demos/blob/master/LICENSE).
-Copyright © 2019-2023, JetBrains s.r.o.
+Copyright © 2023-2024, JetBrains s.r.o.
