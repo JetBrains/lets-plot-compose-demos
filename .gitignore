@@ -9,5 +9,7 @@
 **/build
 **/out
 /kotlin-js-store/yarn.lock
+/skiko-jni-libs
+skiko-jni-libs.zip
 
 local.properties
