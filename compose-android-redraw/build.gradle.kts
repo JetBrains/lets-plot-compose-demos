@@ -57,7 +57,6 @@ android {
     }
 }
 
-val composeVersion = extra["compose.version"] as String
 val androidxActivityCompose = extra["androidx.activity.compose"] as String
 val skikoVersion = extra["skiko.version"] as String
 
