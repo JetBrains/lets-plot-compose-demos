@@ -42,8 +42,6 @@ From menu `Tools -> Android -> Device Manager` setup Android device.
 For example, Nexus 10 with Android 12 works well.
 
 ### Running a Demo
-
-Download `skiko-jni-libs.zip` from the release page of the [lets-plot-skia](https://github.com/JetBrains/lets-plot-skia/releases) and extract it to the `<PROJECT_ROOT>/skiko-jni-libs` directory.
        
 Build the project:
 ```Kotlin
