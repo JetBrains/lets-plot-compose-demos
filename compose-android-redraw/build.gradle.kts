@@ -4,55 +4,25 @@
  */
 
 import com.android.build.gradle.tasks.MergeSourceSetFolders
-import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
+import java.net.URL
 
 plugins {
     kotlin("android")
+    kotlin("plugin.compose")
     id("org.jetbrains.compose")
     id("com.android.application")
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////
-// Android + Skiko boilerplate
-// from Skia Android Sample:
-// https://github.com/JetBrains/skiko/blob/master/samples/SkiaAndroidSample/build.gradle.kts
-//////////////////////////////////////////////////////////////////////////////////////////
-
 val skikoNativeX64: Configuration by configurations.creating
 val skikoNativeArm64: Configuration by configurations.creating
-
-val jniDir = "${projectDir.absolutePath}/src/main/jniLibs"
-
-val unzipTaskX64 = tasks.register("unzipNativeX64", Copy::class) {
-    destinationDir = file("$jniDir/x86_64")
-    from(skikoNativeX64.map { zipTree(it) }) {
-        include("*.so")
-    }
-    includeEmptyDirs = false
-}
-
-val unzipTaskArm64 = tasks.register("unzipNativeArm64", Copy::class) {
-    destinationDir = file("$jniDir/arm64-v8a")
-    from(skikoNativeArm64.map { zipTree(it) }) {
-        include("*.so")
-    }
-    includeEmptyDirs = false
-}
-
-tasks.withType<MergeSourceSetFolders>().configureEach {
-    dependsOn(unzipTaskX64)
-    dependsOn(unzipTaskArm64)
-}
-
-tasks.withType<KotlinJvmCompile>().configureEach {
-    dependsOn(unzipTaskX64)
-    dependsOn(unzipTaskArm64)
-}
-//////////////////////////////////////////////////////////////////////////////////////////
 
 android {
     compileSdk = (findProperty("android.compileSdk") as String).toInt()
     namespace = "demo.letsPlot"
+
+    buildFeatures {
+        compose = true
+    }
 
     defaultConfig {
         applicationId = "demo.letsPlot.composeMinDemo"
@@ -115,3 +85,66 @@ dependencies {
     implementation("org.slf4j:slf4j-api:2.0.9")
     implementation("com.github.tony19:logback-android:3.0.0")
 }
+
+
+////////////////////////////////////////////////////////
+// Include the following code in your Gradle build script
+// to ensure that compatible Skiko binaries are
+// downloaded and included in your project.
+//
+// Without this, you won't be able to run your app
+// in the IDE on a device emulator.
+// //////////////////////////////////////////////////////
+
+val skikoJniLibsReleaseAssetName = "skiko-jni-libs.zip"
+val skikoJniLibsDestDir = file("${project.projectDir}/src/main/jniLibs/")
+
+tasks.register("downloadSkikoJniLibsReleaseAsset") {
+    val repoUrl = "https://github.com/JetBrains/lets-plot-skia"
+    val releaseTag = "v$letsPlotSkiaVersion"
+
+    doLast {
+        val downloadUrl = "$repoUrl/releases/download/$releaseTag/$skikoJniLibsReleaseAssetName"
+        val outputFile = layout.buildDirectory.file("downloads/$skikoJniLibsReleaseAssetName").get().asFile
+
+        if (outputFile.exists()) {
+            println("File already exists: ${outputFile.absolutePath}")
+            println("Skipping download.")
+        } else {
+            outputFile.parentFile?.mkdirs()
+
+            println("Downloading $skikoJniLibsReleaseAssetName from $downloadUrl")
+            URL(downloadUrl).openStream().use { input ->
+                outputFile.outputStream().use { output ->
+                    input.copyTo(output)
+                }
+            }
+            println("Download completed: ${outputFile.absolutePath}")
+        }
+    }
+}
+
+tasks.register<Copy>("unzipSkikoJniLibsReleaseAsset") {
+    dependsOn("downloadSkikoJniLibsReleaseAsset")
+    from(zipTree(layout.buildDirectory.file("downloads/$skikoJniLibsReleaseAssetName")))
+    into(skikoJniLibsDestDir)
+    doFirst {
+        delete(skikoJniLibsDestDir)
+    }
+}
+
+tasks.register("cleanSkikoJniLibs") {
+    doLast {
+        delete(skikoJniLibsDestDir)
+    }
+}
+
+tasks.named("clean") {
+    dependsOn("cleanSkikoJniLibs")
+}
+
+tasks.withType<MergeSourceSetFolders>().configureEach {
+    dependsOn("unzipSkikoJniLibsReleaseAsset")
+}
+
+////////////////////////////////////////////////////////
