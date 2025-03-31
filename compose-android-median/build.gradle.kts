@@ -13,9 +13,6 @@ plugins {
     id("com.android.application")
 }
 
-val skikoNativeX64: Configuration by configurations.creating
-val skikoNativeArm64: Configuration by configurations.creating
-
 android {
     compileSdk = (findProperty("android.compileSdk") as String).toInt()
     namespace = "demo.letsPlot"
@@ -58,11 +55,11 @@ android {
 }
 
 val androidxActivityCompose = extra["androidx.activity.compose"] as String
-val skikoVersion = extra["skiko.version"] as String
 
-val letsPlotVersion = extra["letsPlot.version"] as String
-val letsPlotKotlinVersion = extra["letsPlotKotlin.version"] as String
-val letsPlotSkiaVersion = extra["letsPlotSkia.version"] as String
+val skikoVersion = extra["skiko.android.version"] as String
+val letsPlotVersion = extra["letsPlot.android.version"] as String
+val letsPlotKotlinVersion = extra["letsPlotKotlin.android.version"] as String
+val letsPlotSkiaVersion = extra["letsPlotSkia.android.version"] as String
 
 dependencies {
     implementation(compose.runtime)
@@ -72,13 +69,8 @@ dependencies {
     implementation("androidx.activity:activity-compose:$androidxActivityCompose")
 
     implementation("org.jetbrains.skiko:skiko-android:$skikoVersion")
-
-    skikoNativeX64("org.jetbrains.skiko:skiko-android-runtime-x64:$skikoVersion")
-    skikoNativeArm64("org.jetbrains.skiko:skiko-android-runtime-arm64:$skikoVersion")
-
     implementation("org.jetbrains.lets-plot:lets-plot-kotlin-kernel:$letsPlotKotlinVersion")
     implementation("org.jetbrains.lets-plot:lets-plot-common:$letsPlotVersion")
-
     implementation("org.jetbrains.lets-plot:lets-plot-compose:$letsPlotSkiaVersion")
 
     implementation("org.slf4j:slf4j-api:2.0.9")
