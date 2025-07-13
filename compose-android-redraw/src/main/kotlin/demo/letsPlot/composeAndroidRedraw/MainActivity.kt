@@ -68,8 +68,8 @@ class MainActivity : ComponentActivity() {
                     }
 
                     if (xs.size > maxPointsCount) {
-                        xs.removeFirst()
-                        ys.removeFirst()
+                        xs.removeAt(0)
+                        ys.removeAt(0)
                     }
 
                     val lastX = xs.lastOrNull() ?: 0.0

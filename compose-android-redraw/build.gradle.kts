@@ -29,10 +29,6 @@ android {
 
         versionCode = 1
         versionName = "1.0"
-
-        ndk {
-            abiFilters += listOf("x86_64", "arm64-v8a")
-        }
     }
 
     buildTypes {
@@ -56,10 +52,9 @@ android {
 
 val androidxActivityCompose = extra["androidx.activity.compose"] as String
 
-val skikoVersion = extra["skiko.android.version"] as String
-val letsPlotVersion = extra["letsPlot.android.version"] as String
-val letsPlotKotlinVersion = extra["letsPlotKotlin.android.version"] as String
-val letsPlotSkiaVersion = extra["letsPlotSkia.android.version"] as String
+val letsPlotVersion = extra["letsPlot.version"] as String
+val letsPlotKotlinVersion = extra["letsPlotKotlin.version"] as String
+val letsPlotSkiaVersion = extra["letsPlotSkia.version"] as String
 
 dependencies {
     implementation(compose.runtime)
@@ -68,8 +63,9 @@ dependencies {
     implementation(compose.ui)
     implementation("androidx.activity:activity-compose:$androidxActivityCompose")
 
-    implementation("org.jetbrains.skiko:skiko-android:$skikoVersion")
     implementation("org.jetbrains.lets-plot:lets-plot-kotlin-kernel:$letsPlotKotlinVersion")
+    implementation("org.jetbrains.lets-plot:canvas:$letsPlotVersion")
+    implementation("org.jetbrains.lets-plot:plot-raster:$letsPlotVersion")
     implementation("org.jetbrains.lets-plot:lets-plot-common:$letsPlotVersion")
     implementation("org.jetbrains.lets-plot:lets-plot-compose:$letsPlotSkiaVersion")
 
