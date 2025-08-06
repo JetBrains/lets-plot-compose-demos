@@ -50,7 +50,7 @@ fun piePlot(): Figure {
         "value" to listOf(40, 90, 10, 50, 20)
     )
     return letsPlot(data) +
-            geomPie(stat = Stat.identity, size = 0.7, sizeUnit = "x") {
+            geomPie(stat = Stat.identity, size = 0.95, sizeUnit = "min") {
                 slice = "value"
                 fill = "name"
             }

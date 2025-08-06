@@ -103,18 +103,12 @@ fun main() = application {
                         .fillMaxSize()
                         .padding(start = 10.dp, top = 10.dp, end = 10.dp, bottom = 10.dp),
                 ) {
-                    Row(
+                    PlotPanel(
+                        figure = figure,
                         modifier = Modifier
                             .fillMaxSize()
-                            .padding(start = 10.dp, top = 10.dp, end = 10.dp, bottom = 10.dp),
-                    ) {
-                        PlotPanel(
-                            figure = figure,
-                            modifier = Modifier
-                                .fillMaxSize()
-                        ) { computationMessages ->
-                            computationMessages.forEach { println("[DEMO APP MESSAGE] $it") }
-                        }
+                    ) { computationMessages ->
+                        computationMessages.forEach { println("[DEMO APP MESSAGE] $it") }
                     }
                 }
             }
