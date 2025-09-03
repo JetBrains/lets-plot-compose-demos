@@ -34,19 +34,15 @@ dependencyResolutionManagement {
         google()
         maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
 
-        // LP-Skia local-dev repo.
-        maven {
-            url = uri("/Users/Igor/Work/lets-plot-skia/.maven-publish-dev-repo")
-        }
-
-        // SNAPSHOTS
+        // SNAPSHOTS (optional)
         maven(url = "https://oss.sonatype.org/content/repositories/snapshots")
 
+        // Also allow mavenLocal as a fallback
         mavenLocal()
     }
 }
 
-include("compose-android-min")
-include("compose-android-median")
-include("compose-android-redraw")
+//    include("compose-android-min")
+//    include("compose-android-median")
+//    include("compose-android-redraw")
 include("compose-desktop")
