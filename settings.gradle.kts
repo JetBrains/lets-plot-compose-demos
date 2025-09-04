@@ -42,7 +42,8 @@ dependencyResolutionManagement {
     }
 }
 
-//    include("compose-android-min")
-//    include("compose-android-median")
-//    include("compose-android-redraw")
+include("compose-android")
+include("compose-android-min")
+include("compose-android-median")
+include("compose-android-redraw")
 include("compose-desktop")

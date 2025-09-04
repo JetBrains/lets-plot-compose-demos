@@ -21,7 +21,7 @@ import demo.letsPlot.composeAndroidMedian.ui.DemoRadioGroup
 import demo.letsPlot.composeAndroidMedian.util.createFigures
 import org.jetbrains.letsPlot.skia.compose.PlotPanel
 
-class MainActivity : ComponentActivity() {
+class MedianDemoActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
