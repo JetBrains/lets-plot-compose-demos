@@ -3,7 +3,7 @@
  * Use of this source code is governed by the MIT license that can be found in the LICENSE file.
  */
 
-package demo.letsPlot.composeAndroidMin
+package demo.letsPlot.compose
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -19,8 +19,9 @@ import org.jetbrains.letsPlot.Figure
 import org.jetbrains.letsPlot.geom.geomDensity
 import org.jetbrains.letsPlot.letsPlot
 import org.jetbrains.letsPlot.skia.compose.PlotPanel
+import java.util.*
 
-class MainActivity : ComponentActivity() {
+class MinimalDemoActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -51,7 +52,7 @@ class MainActivity : ComponentActivity() {
 }
 
 private fun createFigure(): Figure {
-    val rand = java.util.Random()
+    val rand = Random()
     val n = 200
     val xs = List(n) { rand.nextGaussian() }
     val data = mapOf<String, Any>(

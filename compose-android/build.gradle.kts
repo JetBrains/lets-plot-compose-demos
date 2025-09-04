@@ -19,7 +19,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "demo.letsPlot.composeMedianDemo"
+        applicationId = "demo.letsPlot"
 
         minSdk = (findProperty("android.minSdk") as String).toInt()
         targetSdk = (findProperty("android.targetSdk") as String).toInt()

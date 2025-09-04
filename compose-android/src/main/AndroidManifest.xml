@@ -12,15 +12,27 @@
 <!--      android:theme="@style/Theme.AppCompat.Light">-->
 <!--      android:theme="@style/Theme.AppCompat.Light.NoActionBar">-->
 
+      <activity
+              android:exported="true"
+              android:name="demo.letsPlot.compose.MinimalDemoActivity"
+      >
+          <intent-filter>
+              <action android:name="android.intent.action.MAIN" />
+              <category android:name="android.intent.category.LAUNCHER" />
+          </intent-filter>
+      </activity>
+
     <activity
         android:exported="true"
-        android:name="demo.letsPlot.composeAndroidMedian.MedianDemoActivity"
+        android:name="demo.letsPlot.compose.MedianDemoActivity"
     >
       <intent-filter>
-          <action android:name="android.intent.action.MAIN" />
+        <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
+
+
   </application>
 
 </manifest>
