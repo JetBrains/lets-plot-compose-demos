@@ -1,38 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
 
-  <application
-      android:allowBackup="true"
-      android:icon="@mipmap/ic_launcher"
-      android:label="@string/app_name"
-      android:roundIcon="@mipmap/ic_launcher_round"
-      android:supportsRtl="true"
-      android:debuggable="true"
-      tools:ignore="HardcodedDebugMode">
-<!--      android:theme="@style/Theme.AppCompat.Light">-->
-<!--      android:theme="@style/Theme.AppCompat.Light.NoActionBar">-->
-
-      <activity
-              android:exported="true"
-              android:name="demo.letsPlot.compose.MinimalDemoActivity"
-      >
-          <intent-filter>
-              <action android:name="android.intent.action.MAIN" />
-              <category android:name="android.intent.category.LAUNCHER" />
-          </intent-filter>
-      </activity>
-
-    <activity
-        android:exported="true"
-        android:name="demo.letsPlot.compose.MedianDemoActivity"
-    >
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
-        <category android:name="android.intent.category.LAUNCHER" />
-      </intent-filter>
-    </activity>
-
-
-  </application>
+    <application
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:debuggable="true"
+            tools:ignore="HardcodedDebugMode">
+        <!--      android:theme="@style/Theme.AppCompat.Light">-->
+        <!--      android:theme="@style/Theme.AppCompat.Light.NoActionBar">-->
+        <!-- New default launcher activity -->
+        <activity
+                android:exported="true"
+                android:name="demo.letsPlot.compose.MainMenuActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <!-- Existing demo activities (no launcher intent-filters) -->
+        <activity
+                android:exported="true"
+                android:name="demo.letsPlot.compose.MinimalDemoActivity"
+        >
+        </activity>
+        <activity
+                android:exported="true"
+                android:name="demo.letsPlot.compose.MedianDemoActivity"
+        >
+        </activity>
+        <activity
+                android:exported="true"
+                android:name="demo.letsPlot.compose.RedrawDemoActivity"
+        >
+        </activity>
+    </application>
 
 </manifest>
