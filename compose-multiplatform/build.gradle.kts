@@ -13,7 +13,6 @@ plugins {
 val letsPlotVersion = extra["letsPlot.version"] as String
 val letsPlotKotlinVersion = extra["letsPlotKotlin.version"] as String
 val letsPlotSkiaVersion = extra["letsPlotSkia.version"] as String
-val composeVersion = extra["compose.version"] as String
 val activityComposeVersion = findProperty("androidx.activity.compose") as String
 
 kotlin {
