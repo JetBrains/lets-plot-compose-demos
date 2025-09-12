@@ -40,8 +40,11 @@ kotlin {
                 implementation(compose.material)
                 implementation(compose.ui)
 
+                // Lets-Plot Kotlin API
                 implementation("org.jetbrains.lets-plot:lets-plot-kotlin-kernel:$letsPlotKotlinVersion")
+                // Lets-Plot Multiplatform
                 implementation("org.jetbrains.lets-plot:lets-plot-common:$letsPlotVersion")
+                // Lets-Plot Compose UI
                 implementation("org.jetbrains.lets-plot:lets-plot-compose:$letsPlotSkiaVersion")
             }
         }
@@ -50,7 +53,7 @@ kotlin {
             dependencies {
                 implementation("androidx.activity:activity-compose:$activityComposeVersion")
                 
-                // Android-specific Let's Plot dependencies
+                // Lets-Plot Multiplatform Android-specific dependencies
                 implementation("org.jetbrains.lets-plot:canvas:$letsPlotVersion")
                 implementation("org.jetbrains.lets-plot:plot-raster:$letsPlotVersion")
                 

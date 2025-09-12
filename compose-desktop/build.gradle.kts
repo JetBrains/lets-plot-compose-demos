@@ -16,10 +16,12 @@ val letsPlotSkiaVersion = extra["letsPlotSkia.version"] as String
 dependencies {
     implementation(compose.desktop.currentOs)
 
+    // Lets-Plot Kotlin API
     implementation("org.jetbrains.lets-plot:lets-plot-kotlin-kernel:$letsPlotKotlinVersion")
+    // Lets-Plot Multiplatform
     implementation("org.jetbrains.lets-plot:lets-plot-common:$letsPlotVersion")
-    implementation("org.jetbrains.lets-plot:platf-awt:$letsPlotVersion")
-    // Optional: for `ggsave()` to be able to save plots as PNG files
+//    implementation("org.jetbrains.lets-plot:platf-awt:$letsPlotVersion")
+    // Lets-Plot 'image export (optional - enables exporting to raster formats)
     implementation("org.jetbrains.lets-plot:lets-plot-image-export:${letsPlotVersion}")
     implementation("org.jetbrains.lets-plot:lets-plot-compose:$letsPlotSkiaVersion")
 

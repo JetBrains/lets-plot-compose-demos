@@ -60,12 +60,16 @@ dependencies {
     implementation(compose.ui)
     implementation("androidx.activity:activity-compose:$androidxActivityCompose")
 
+    // Lets-Plot Kotlin API
     implementation("org.jetbrains.lets-plot:lets-plot-kotlin-kernel:$letsPlotKotlinVersion")
+    // Lets-Plot Multiplatform
     implementation("org.jetbrains.lets-plot:lets-plot-common:$letsPlotVersion")
+    // Lets-Plot Multiplatform Android-specific dependencies
     implementation("org.jetbrains.lets-plot:canvas:$letsPlotVersion")
     implementation("org.jetbrains.lets-plot:plot-raster:$letsPlotVersion")
+    // Lets-Plot Compose UI
     implementation("org.jetbrains.lets-plot:lets-plot-compose:$letsPlotSkiaVersion")
 
-    implementation("org.slf4j:slf4j-api:2.0.9")
+    implementation("org.slf4j:slf4j-api:2.0.17")
     implementation("com.github.tony19:logback-android:3.0.0")
 }
