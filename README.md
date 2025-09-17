@@ -3,18 +3,21 @@
 [![License MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://raw.githubusercontent.com/JetBrains/lets-plot-compose-demos/master/LICENSE)
 
 
-# Lets-Plot Skia Frontend in Compose Applications (Examples)
+# Lets-Plot Compose Multiplatform Examples
 
-[**Lets-Plot Skia Frontend**](https://github.com/JetBrains/lets-plot-skia) is a Kotlin Multiplatform library that allows you to embed \
-[Lets-Plot](https://github.com/JetBrains/lets-plot) charts in a [Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform), Android or Java Swing application.
+[**Lets-Plot Compose Frontend**](https://github.com/JetBrains/lets-plot-compose) is a Kotlin Multiplatform library that allows you to embed \
+[Lets-Plot](https://github.com/JetBrains/lets-plot) charts in a [Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform) (Desktop, Android) application.
 
 
-## Compose Multiplatform Demos
+## Compose Desktop Demos
 
-To run a Compose Multiplatform demo in IntelliJ IDEA simply navigate to [MinimalAppMain.kt](https://github.com/JetBrains/lets-plot-compose-demos/tree/main/compose-desktop/src/main/kotlin/demo/letsPlot/composeDesktop/minimal) or [MedianAppMain.kt](https://github.com/JetBrains/lets-plot-compose-demos/tree/main/compose-desktop/src/main/kotlin/demo/letsPlot/composeDesktop/median) and select "`Run <app>`" from the context menu.
+To run a Compose Desktop demo in IntelliJ IDEA, navigate to a `<demo name>AppMain.kt` file in the 
+[compose-desktop](https://github.com/JetBrains/lets-plot-compose-demos/tree/main/compose-desktop/src/main/kotlin/demo/letsPlot) or 
+[compose-multiplatform/src/desktopMain](https://github.com/JetBrains/lets-plot-compose-demos/tree/main/compose-multiplatform/src/desktopMain/kotlin/demo/letsPlot) 
+folder and select "`Run <app>`" from the context menu.
+
 
 ## Android: Running Demos in IntelliJ IDEA
-
 
 ### Setting up the Environment
 
@@ -49,8 +52,8 @@ Build the project:
 ./gradlew build
 ```
 
-In the `Run configurations` toolbar:
-- Select `compose-android-min` or `compose-android-median` application
+In the `Run Configurations` toolbar:
+- Select `compose-android-min`, `compose-android-median`, or other _AndroidApp Run Configuration_
 - Select the `Android` device
 - Click `Run`
 
@@ -64,4 +67,4 @@ Please make sure you read it.
 
 Code and documentation released under
 the [MIT license](https://github.com/JetBrains/lets-plot-compose-demos/blob/master/LICENSE).
-Copyright © 2023-2024, JetBrains s.r.o.
+Copyright © 2023, JetBrains s.r.o.
