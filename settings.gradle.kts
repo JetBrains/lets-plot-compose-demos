@@ -35,7 +35,7 @@ dependencyResolutionManagement {
         maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
 
         // SNAPSHOTS (optional)
-        maven(url = "https://oss.sonatype.org/content/repositories/snapshots")
+        maven(url = "https://central.sonatype.com/repository/maven-snapshots/")
 
         // Also allow mavenLocal as a fallback
         mavenLocal()

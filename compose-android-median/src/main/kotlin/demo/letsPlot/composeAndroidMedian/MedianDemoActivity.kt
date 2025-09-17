@@ -19,7 +19,7 @@ import ch.qos.logback.classic.android.BasicLogcatConfigurator
 import demo.letsPlot.composeAndroidMedian.ui.DemoDropdownMenu
 import demo.letsPlot.composeAndroidMedian.ui.DemoRadioGroup
 import demo.letsPlot.composeAndroidMedian.util.createFigures
-import org.jetbrains.letsPlot.skia.compose.PlotPanel
+import org.jetbrains.letsPlot.compose.PlotPanel
 
 class MedianDemoActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

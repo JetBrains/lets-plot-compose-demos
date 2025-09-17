@@ -20,7 +20,7 @@ import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import demo.letsPlot.composeDesktop.median.ui.DemoList
 import demo.letsPlot.composeDesktop.median.util.createFigures
-import org.jetbrains.letsPlot.skia.compose.PlotPanel
+import org.jetbrains.letsPlot.compose.PlotPanel
 
 fun main() = application {
     Window(onCloseRequest = ::exitApplication, title = "Lets-Plot in Compose Desktop (median)") {

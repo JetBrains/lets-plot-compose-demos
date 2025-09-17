@@ -13,9 +13,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import org.jetbrains.letsPlot.Figure
+import org.jetbrains.letsPlot.compose.PlotPanel
 import org.jetbrains.letsPlot.geom.geomDensity
 import org.jetbrains.letsPlot.letsPlot
-import org.jetbrains.letsPlot.skia.compose.PlotPanel
 import kotlin.random.Random
 
 @Composable

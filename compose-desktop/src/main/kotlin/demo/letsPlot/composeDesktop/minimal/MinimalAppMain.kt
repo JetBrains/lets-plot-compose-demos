@@ -16,7 +16,7 @@ import androidx.compose.ui.window.application
 import org.jetbrains.letsPlot.Figure
 import org.jetbrains.letsPlot.geom.geomDensity
 import org.jetbrains.letsPlot.letsPlot
-import org.jetbrains.letsPlot.skia.compose.PlotPanel
+import org.jetbrains.letsPlot.compose.PlotPanel
 
 fun main() = application {
     Window(onCloseRequest = ::exitApplication, title = "Lets-Plot in Compose Desktop (min)") {
