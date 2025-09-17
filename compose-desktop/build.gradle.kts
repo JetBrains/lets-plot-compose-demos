@@ -11,7 +11,7 @@ plugins {
 
 val letsPlotVersion = extra["letsPlot.version"] as String
 val letsPlotKotlinVersion = extra["letsPlotKotlin.version"] as String
-val letsPlotSkiaVersion = extra["letsPlotSkia.version"] as String
+val letsPlotComposeVersion = extra["letsPlotCompose.version"] as String
 
 dependencies {
     implementation(compose.desktop.currentOs)
@@ -20,10 +20,9 @@ dependencies {
     implementation("org.jetbrains.lets-plot:lets-plot-kotlin-kernel:$letsPlotKotlinVersion")
     // Lets-Plot Multiplatform
     implementation("org.jetbrains.lets-plot:lets-plot-common:$letsPlotVersion")
-//    implementation("org.jetbrains.lets-plot:platf-awt:$letsPlotVersion")
     // Lets-Plot 'image export (optional - enables exporting to raster formats)
     implementation("org.jetbrains.lets-plot:lets-plot-image-export:${letsPlotVersion}")
-    implementation("org.jetbrains.lets-plot:lets-plot-compose:$letsPlotSkiaVersion")
+    implementation("org.jetbrains.lets-plot:lets-plot-compose:$letsPlotComposeVersion")
 
     implementation("org.slf4j:slf4j-simple:2.0.9")  // Enable logging to console
 }

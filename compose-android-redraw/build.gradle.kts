@@ -51,7 +51,7 @@ val androidxActivityCompose = extra["androidx.activity.compose"] as String
 
 val letsPlotVersion = extra["letsPlot.version"] as String
 val letsPlotKotlinVersion = extra["letsPlotKotlin.version"] as String
-val letsPlotSkiaVersion = extra["letsPlotSkia.version"] as String
+val letsPlotComposeVersion = extra["letsPlotCompose.version"] as String
 
 dependencies {
     implementation(compose.runtime)
@@ -68,7 +68,7 @@ dependencies {
     implementation("org.jetbrains.lets-plot:canvas:${letsPlotVersion}")
     implementation("org.jetbrains.lets-plot:plot-raster:${letsPlotVersion}")
     // Lets-Plot Compose UI
-    implementation("org.jetbrains.lets-plot:lets-plot-compose:$letsPlotSkiaVersion")
+    implementation("org.jetbrains.lets-plot:lets-plot-compose:$letsPlotComposeVersion")
 
     implementation("org.slf4j:slf4j-api:2.0.17")
     implementation("com.github.tony19:logback-android:3.0.0")

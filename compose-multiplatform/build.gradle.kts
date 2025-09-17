@@ -12,7 +12,7 @@ plugins {
 
 val letsPlotVersion = extra["letsPlot.version"] as String
 val letsPlotKotlinVersion = extra["letsPlotKotlin.version"] as String
-val letsPlotSkiaVersion = extra["letsPlotSkia.version"] as String
+val letsPlotComposeVersion = extra["letsPlotCompose.version"] as String
 val activityComposeVersion = findProperty("androidx.activity.compose") as String
 
 kotlin {
@@ -46,7 +46,7 @@ kotlin {
                 // Lets-Plot Multiplatform
                 implementation("org.jetbrains.lets-plot:lets-plot-common:$letsPlotVersion")
                 // Lets-Plot Compose UI
-                implementation("org.jetbrains.lets-plot:lets-plot-compose:$letsPlotSkiaVersion")
+                implementation("org.jetbrains.lets-plot:lets-plot-compose:$letsPlotComposeVersion")
             }
         }
 
