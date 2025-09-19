@@ -3,13 +3,13 @@
 [![License MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://raw.githubusercontent.com/JetBrains/lets-plot-compose-demos/master/LICENSE)
 
 
-# Lets-Plot Compose Multiplatform Examples
+# Lets-Plot Compose Examples
 
 [**Lets-Plot Compose Frontend**](https://github.com/JetBrains/lets-plot-compose) is a Kotlin Multiplatform library that allows you to embed \
 [Lets-Plot](https://github.com/JetBrains/lets-plot) charts in a [Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform) (Desktop, Android) application.
 
 
-## Compose Desktop Demos
+## Desktop
 
 To run a Compose Desktop demo in IntelliJ IDEA, navigate to a `<demo name>AppMain.kt` file in the 
 [compose-desktop](https://github.com/JetBrains/lets-plot-compose-demos/tree/main/compose-desktop/src/main/kotlin/demo/letsPlot) or 
@@ -17,7 +17,7 @@ To run a Compose Desktop demo in IntelliJ IDEA, navigate to a `<demo name>AppMai
 folder and select "`Run <app>`" from the context menu.
 
 
-## Android: Running Demos in IntelliJ IDEA
+## Android (in IntelliJ IDEA)
 
 ### Setting up the Environment
 
