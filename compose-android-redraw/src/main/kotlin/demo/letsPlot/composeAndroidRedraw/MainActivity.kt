@@ -4,7 +4,6 @@
  */
 
 package demo.letsPlot.composeAndroidRedraw
-
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -18,15 +17,14 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import ch.qos.logback.classic.android.BasicLogcatConfigurator
 import kotlinx.coroutines.delay
+import org.jetbrains.letsPlot.geom.geomBlank
 import org.jetbrains.letsPlot.geom.geomLine
-import org.jetbrains.letsPlot.geom.geomPoint
 import org.jetbrains.letsPlot.intern.Plot
 import org.jetbrains.letsPlot.letsPlot
 import org.jetbrains.letsPlot.scale.xlim
 import org.jetbrains.letsPlot.scale.ylim
-import org.jetbrains.letsPlot.skia.compose.PlotPanel
+import org.jetbrains.letsPlot.compose.PlotPanel
 import kotlin.math.sin
 
 class MainActivity : ComponentActivity() {
@@ -45,10 +43,22 @@ class MainActivity : ComponentActivity() {
             var fixedAxis by rememberSaveable { mutableStateOf(true) }
 
             fun plot(): Plot {
-                var p = letsPlot() + ylim(listOf(-1.0, 1.0)) + geomPoint() // missing geomBlank() to not fail with "no layers in plot" error on init/clean
+                val data = mapOf<String, Any>(
+                    "x" to xs,
+                    "y" to ys
+                )
+
+                var p = letsPlot() + ylim(listOf(-1.0, 1.0))
+                if (xs.isEmpty()) {
+                    p += geomBlank()
+                } else {
+                    p += geomLine(data = data, color = "black", size = 1.2) { x = "x"; y = "y" }
+                }
+
                 if (fixedAxis) {
                     p += xlim(listOf(0.0, step * maxPointsCount))
                 }
+
                 return p
             }
 
@@ -61,6 +71,7 @@ class MainActivity : ComponentActivity() {
                     if (fixedAxis) {
                         // With fixed wait until we run out of axis and then clear the data to start from the beginning.
                         val firstX = xs.firstOrNull() ?: 0.0
+
                         if (firstX > step * maxPointsCount) { // run out of axis
                             xs.clear()
                             ys.clear()
@@ -68,8 +79,8 @@ class MainActivity : ComponentActivity() {
                     }
 
                     if (xs.size > maxPointsCount) {
-                        xs.removeFirst()
-                        ys.removeFirst()
+                        xs.removeAt(0)
+                        ys.removeAt(0)
                     }
 
                     val lastX = xs.lastOrNull() ?: 0.0
@@ -79,79 +90,49 @@ class MainActivity : ComponentActivity() {
                     xs.add(nextX)
                     ys.add(nextY)
 
-                    val data = mapOf<String, Any>(
-                        "x" to xs,
-                        "y" to ys
-                    )
-                    figure = plot() + geomLine(data = data, color = "black", size = 1.2) { x = "x"; y = "y" }
+                    figure = plot()
                 }
             }
 
             MaterialTheme {
-                Row {
-                    Column(
-                        verticalArrangement = Arrangement.Center,
-                        modifier = Modifier
-                            .align(Alignment.CenterVertically)
-                            .width(IntrinsicSize.Max)
-                            .padding(10.dp)
-                    ) {
-                        Row {
-                            Button(
-                                onClick = { isPaused = !isPaused },
-                                modifier = Modifier
-                                    .width(100.dp)
-                                    .padding(horizontal = 10.dp)
-                            ) {
-                                Text(text = if (isPaused) "Run" else "Pause")
-                            }
-                            Button(
-                                onClick = {
-                                    xs.clear()
-                                    ys.clear()
-                                    figure = plot()
-                                }, modifier = Modifier
-                                    .width(100.dp)
-                            ) {
-                                Text(text = "Reset")
-                            }
-                        }
-                        Row {
-                            Text(
-                                text = "Fixed axis:",
-                                modifier = Modifier
-                                    .align(Alignment.CenterVertically)
-                            )
-                            Checkbox(fixedAxis, onCheckedChange = { fixedAxis = it })
-                        }
-                    }
+                Column(modifier = Modifier.fillMaxSize()) {
                     Row(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(start = 10.dp, top = 10.dp, end = 10.dp, bottom = 10.dp),
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically,
                     ) {
-                        Row(
+                        Button(
+                            onClick = { isPaused = !isPaused },
                             modifier = Modifier
-                                .fillMaxSize()
-                                .padding(start = 10.dp, top = 10.dp, end = 10.dp, bottom = 10.dp),
+                                .width(100.dp)
                         ) {
-                            PlotPanel(
-                                figure = figure,
-                                modifier = Modifier
-                                    .fillMaxSize()
-                            ) { computationMessages ->
-                                computationMessages.forEach { println("[DEMO APP MESSAGE] $it") }
-                            }
+                            Text(text = if (isPaused) "Run" else "Pause")
                         }
+                        Spacer(modifier = Modifier.width(5.dp))
+                        Button(
+                            onClick = {
+                                xs.clear()
+                                ys.clear()
+                                figure = plot()
+                            }, modifier = Modifier
+                                .width(100.dp)
+                        ) {
+                            Text(text = "Reset")
+                        }
+                        Spacer(modifier = Modifier.width(10.dp))
+                        Text(
+                            text = "Fixed axis:"
+                        )
+                        Checkbox(fixedAxis, onCheckedChange = { fixedAxis = it })
+                    }
+
+                    PlotPanel(
+                        figure = figure,
+                        modifier = Modifier.fillMaxWidth().weight(1f)
+                    ) { computationMessages ->
+                        computationMessages.forEach { println("[DEMO APP MESSAGE] $it") }
                     }
                 }
             }
-        }
-    }
-
-    private companion object {
-        init {
-            BasicLogcatConfigurator.configureDefaultContext()
         }
     }
 }

@@ -3,98 +3,21 @@
 [![License MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://raw.githubusercontent.com/JetBrains/lets-plot-compose-demos/master/LICENSE)
 
 
-# Lets-Plot Skia Frontend in Compose Applications (Examples)
+# Lets-Plot Compose Multiplatform Examples
 
-[**Lets-Plot Skia Frontend**](https://github.com/JetBrains/lets-plot-skia) is a Kotlin Multiplatform library that allows you to embed \
-[Lets-Plot](https://github.com/JetBrains/lets-plot) charts in a [Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform), Android or Java Swing application.
+[**Lets-Plot Compose Frontend**](https://github.com/JetBrains/lets-plot-compose) is a Kotlin Multiplatform library that allows you to embed \
+[Lets-Plot](https://github.com/JetBrains/lets-plot) charts in a [Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform) (Desktop, Android) application.
 
 
-## Compose Multiplatform Demos
+## Compose Desktop Demos
 
-To run a Compose Multiplatform demo in IntelliJ IDEA simply navigate to [MinimalAppMain.kt](https://github.com/JetBrains/lets-plot-compose-demos/tree/main/compose-desktop/src/main/kotlin/demo/letsPlot/composeDesktop/minimal) or [MedianAppMain.kt](https://github.com/JetBrains/lets-plot-compose-demos/tree/main/compose-desktop/src/main/kotlin/demo/letsPlot/composeDesktop/median) and select "`Run <app>`" from the context menu.
+To run a Compose Desktop demo in IntelliJ IDEA, navigate to a `<demo name>AppMain.kt` file in the 
+[compose-desktop](https://github.com/JetBrains/lets-plot-compose-demos/tree/main/compose-desktop/src/main/kotlin/demo/letsPlot) or 
+[compose-multiplatform/src/desktopMain](https://github.com/JetBrains/lets-plot-compose-demos/tree/main/compose-multiplatform/src/desktopMain/kotlin/demo/letsPlot) 
+folder and select "`Run <app>`" from the context menu.
+
 
 ## Android: Running Demos in IntelliJ IDEA
-### Project configuration
-
-> ### Due to [SKIKO-948](https://youtrack.jetbrains.com/issue/SKIKO-948/When-will-the-Android-artifacts-be-published-on-Maven-Central), updates for the Android version of the library are temporarily paused.
-> The last library version with Android support is available with the following dependencies:  
-> `implementation("org.jetbrains.skiko:skiko-android:0.8.4")`  
-> `implementation("org.jetbrains.lets-plot:lets-plot-compose:2.0.0")`  
-> `implementation("org.jetbrains.lets-plot:lets-plot-kotlin-kernel:4.8.0")`  
-> `implementation("org.jetbrains.lets-plot:lets-plot-common:4.4.1")`
->
-To use lets-plot-compose in an Android project, special configuration is required in `build.gradle.kts` to serve the Skia binaries:
-<details>
-    <summary>Click to see the code</summary>
-    Code  
-
-    ```
-    ////////////////////////////////////////////////////////
-    // Include the following code in your Gradle build script
-    // to ensure that compatible Skiko binaries are
-    // downloaded and included in your project.
-    //
-    // Without this, you won't be able to run your app
-    // in the IDE on a device emulator.
-    // //////////////////////////////////////////////////////
-    
-    val skikoJniLibsReleaseAssetName = "skiko-jni-libs.zip"
-    val skikoJniLibsDestDir = file("${project.projectDir}/src/main/jniLibs/")
-    
-    tasks.register("downloadSkikoJniLibsReleaseAsset") {
-        val repoUrl = "https://github.com/JetBrains/lets-plot-skia"
-        val releaseTag = "v$letsPlotSkiaVersion"
-    
-        doLast {
-            val downloadUrl = "$repoUrl/releases/download/$releaseTag/$skikoJniLibsReleaseAssetName"
-            val outputFile = layout.buildDirectory.file("downloads/$skikoJniLibsReleaseAssetName").get().asFile
-    
-            if (outputFile.exists()) {
-                println("File already exists: ${outputFile.absolutePath}")
-                println("Skipping download.")
-            } else {
-                outputFile.parentFile?.mkdirs()
-    
-                println("Downloading $skikoJniLibsReleaseAssetName from $downloadUrl")
-                URL(downloadUrl).openStream().use { input ->
-                    outputFile.outputStream().use { output ->
-                        input.copyTo(output)
-                    }
-                }
-                println("Download completed: ${outputFile.absolutePath}")
-            }
-        }
-    }
-    
-    tasks.register<Copy>("unzipSkikoJniLibsReleaseAsset") {
-        dependsOn("downloadSkikoJniLibsReleaseAsset")
-        from(zipTree(layout.buildDirectory.file("downloads/$skikoJniLibsReleaseAssetName")))
-        into(skikoJniLibsDestDir)
-        doFirst {
-            delete(skikoJniLibsDestDir)
-        }
-    }
-    
-    tasks.register("cleanSkikoJniLibs") {
-        doLast {
-            delete(skikoJniLibsDestDir)
-        }
-    }
-    
-    tasks.named("clean") {
-        dependsOn("cleanSkikoJniLibs")
-    }
-    
-    tasks.withType<MergeSourceSetFolders>().configureEach {
-        dependsOn("unzipSkikoJniLibsReleaseAsset")
-    }
-    
-    ////////////////////////////////////////////////////////
-    ```
-</details>
-
-
-
 
 ### Setting up the Environment
 
@@ -129,8 +52,8 @@ Build the project:
 ./gradlew build
 ```
 
-In the `Run configurations` toolbar:
-- Select `compose-android-min` or `compose-android-median` application
+In the `Run Configurations` toolbar:
+- Select `compose-android-min`, `compose-android-median`, or other _AndroidApp Run Configuration_
 - Select the `Android` device
 - Click `Run`
 
@@ -144,4 +67,4 @@ Please make sure you read it.
 
 Code and documentation released under
 the [MIT license](https://github.com/JetBrains/lets-plot-compose-demos/blob/master/LICENSE).
-Copyright © 2023-2024, JetBrains s.r.o.
+Copyright © 2023, JetBrains s.r.o.

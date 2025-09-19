@@ -16,11 +16,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import ch.qos.logback.classic.android.BasicLogcatConfigurator
 import org.jetbrains.letsPlot.Figure
+import org.jetbrains.letsPlot.compose.PlotPanel
 import org.jetbrains.letsPlot.geom.geomDensity
 import org.jetbrains.letsPlot.letsPlot
-import org.jetbrains.letsPlot.skia.compose.PlotPanel
 
-class MainActivity : ComponentActivity() {
+class MinimalDemoActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

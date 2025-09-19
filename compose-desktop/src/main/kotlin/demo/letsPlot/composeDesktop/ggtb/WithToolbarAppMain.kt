@@ -15,7 +15,7 @@ import org.jetbrains.letsPlot.geom.geomDensity
 import org.jetbrains.letsPlot.geom.geomPoint
 import org.jetbrains.letsPlot.interact.ggtb
 import org.jetbrains.letsPlot.letsPlot
-import org.jetbrains.letsPlot.skia.compose.PlotPanel
+import org.jetbrains.letsPlot.compose.PlotPanel
 
 fun main() = application {
     val rand = java.util.Random()
