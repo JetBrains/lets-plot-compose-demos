@@ -45,6 +45,8 @@ kotlin {
                 implementation("org.jetbrains.lets-plot:lets-plot-kotlin-kernel:$letsPlotKotlinVersion")
                 // Lets-Plot Multiplatform
                 implementation("org.jetbrains.lets-plot:lets-plot-common:$letsPlotVersion")
+                implementation("org.jetbrains.lets-plot:canvas:${letsPlotVersion}")
+                implementation("org.jetbrains.lets-plot:plot-raster:${letsPlotVersion}")
                 // Lets-Plot Compose UI
                 implementation("org.jetbrains.lets-plot:lets-plot-compose:$letsPlotComposeVersion")
             }
@@ -52,12 +54,8 @@ kotlin {
 
         val androidMain by getting {
             dependencies {
-                implementation("androidx.activity:activity-compose:$activityComposeVersion")
-                
-                // Lets-Plot Multiplatform Android-specific dependencies
-                implementation("org.jetbrains.lets-plot:canvas:$letsPlotVersion")
-                implementation("org.jetbrains.lets-plot:plot-raster:$letsPlotVersion")
-                
+                implementation("androidx.activity:activity-compose:${activityComposeVersion}")
+
                 // Android logging
                 implementation("org.slf4j:slf4j-api:2.0.9")
                 implementation("com.github.tony19:logback-android:3.0.0")

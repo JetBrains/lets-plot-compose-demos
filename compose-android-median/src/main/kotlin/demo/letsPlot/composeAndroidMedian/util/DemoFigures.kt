@@ -7,10 +7,12 @@ package demo.letsPlot.composeAndroidMedian.util
 
 import org.jetbrains.letsPlot.Figure
 import org.jetbrains.letsPlot.Stat
+import org.jetbrains.letsPlot.annotations.layerLabels
 import org.jetbrains.letsPlot.geom.geomBar
 import org.jetbrains.letsPlot.geom.geomDensity
 import org.jetbrains.letsPlot.geom.geomPie
 import org.jetbrains.letsPlot.letsPlot
+import org.jetbrains.letsPlot.themes.themeVoid
 
 fun createFigures(): List<Pair<String, Figure>> {
     return listOf(
@@ -46,12 +48,12 @@ fun barPlot(): Figure {
 
 fun piePlot(): Figure {
     val data = mapOf(
-        "name" to listOf('a', 'b', 'c', 'd', 'b'),
-        "value" to listOf(40, 90, 10, 50, 20)
+        "name" to listOf('b', 'd', 'a', 'e', 'c'),
+        "value" to listOf(90, 50, 40, 20, 10)
     )
     return letsPlot(data) +
-            geomPie(stat = Stat.identity, size = 0.7, sizeUnit = "x") {
+            geomPie(stat = Stat.identity, size = 0.8, sizeUnit = "min", labels = layerLabels().line("@name: ^slice"), showLegend = false) {
                 slice = "value"
                 fill = "name"
-            }
+            } + themeVoid()
 }

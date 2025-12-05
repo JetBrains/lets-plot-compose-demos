@@ -20,6 +20,8 @@ dependencies {
     implementation("org.jetbrains.lets-plot:lets-plot-kotlin-kernel:$letsPlotKotlinVersion")
     // Lets-Plot Multiplatform
     implementation("org.jetbrains.lets-plot:lets-plot-common:$letsPlotVersion")
+    implementation("org.jetbrains.lets-plot:canvas:${letsPlotVersion}")
+    implementation("org.jetbrains.lets-plot:plot-raster:${letsPlotVersion}")
     // Lets-Plot 'image export' (optional - enables exporting to raster formats)
     implementation("org.jetbrains.lets-plot:lets-plot-image-export:${letsPlotVersion}")
     // Lets-Plot Compose UI
