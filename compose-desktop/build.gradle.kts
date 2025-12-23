@@ -15,6 +15,7 @@ val letsPlotComposeVersion = extra["letsPlotCompose.version"] as String
 
 dependencies {
     implementation(compose.desktop.currentOs)
+    implementation(compose.components.resources)
 
     // Lets-Plot Kotlin API
     implementation("org.jetbrains.lets-plot:lets-plot-kotlin-kernel:$letsPlotKotlinVersion")
