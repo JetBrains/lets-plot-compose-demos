@@ -10,6 +10,7 @@ plugins {
     id("com.android.application")
 }
 
+val composeVersion = extra["compose.version"] as String
 val letsPlotVersion = extra["letsPlot.version"] as String
 val letsPlotKotlinVersion = extra["letsPlotKotlin.version"] as String
 val letsPlotComposeVersion = extra["letsPlotCompose.version"] as String
@@ -17,29 +18,24 @@ val activityComposeVersion = findProperty("androidx.activity.compose") as String
 
 kotlin {
     androidTarget {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "11"
-            }
+        compilerOptions {
+            jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11)
         }
     }
 
     jvm("desktop") {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "11"
-            }
+        compilerOptions {
+            jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11)
         }
     }
 
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(compose.runtime)
-                implementation(compose.foundation)
-                implementation(compose.material)
-                implementation(compose.materialIconsExtended)
-                implementation(compose.ui)
+                implementation("org.jetbrains.compose.runtime:runtime:$composeVersion")
+                implementation("org.jetbrains.compose.foundation:foundation:$composeVersion")
+                implementation("org.jetbrains.compose.material:material:$composeVersion")
+                implementation("org.jetbrains.compose.ui:ui:$composeVersion")
 
                 // Lets-Plot Kotlin API
                 implementation("org.jetbrains.lets-plot:lets-plot-kotlin-kernel:$letsPlotKotlinVersion")
@@ -57,7 +53,7 @@ kotlin {
                 implementation("androidx.activity:activity-compose:$activityComposeVersion")
 
                 // Android logging
-                implementation("org.slf4j:slf4j-api:2.0.9")
+                implementation("org.slf4j:slf4j-api:2.0.17")
                 implementation("com.github.tony19:logback-android:3.0.0")
             }
         }
@@ -65,10 +61,10 @@ kotlin {
         val desktopMain by getting {
             dependencies {
                 implementation(compose.desktop.currentOs)
-                implementation(compose.components.resources)
+                implementation("org.jetbrains.compose.components:components-resources:$composeVersion")
 
                 implementation("org.jetbrains.lets-plot:platf-awt:$letsPlotVersion")
-                implementation("org.slf4j:slf4j-simple:2.0.9")
+                implementation("org.slf4j:slf4j-simple:2.0.17")
             }
         }
 
