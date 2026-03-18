@@ -54,7 +54,7 @@ fun main() = application {
                                 val skiaImage = Image.makeFromEncoded(imageBytes)
                                 val imageBitmap = skiaImage.toComposeImageBitmap()
 
-                                // Do state change to trigger recomposition
+                                // Do state change to trigger recomposition.
                                 imageWindows = imageWindows + ImageWindowData(
                                     id = System.currentTimeMillis(),
                                     filePath = actualFilePath,

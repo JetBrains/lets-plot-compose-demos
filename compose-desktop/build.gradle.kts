@@ -20,8 +20,10 @@ dependencies {
 
     // Lets-Plot Kotlin API
     implementation("org.jetbrains.lets-plot:lets-plot-kotlin-kernel:$letsPlotKotlinVersion")
-    // Lets-Plot Multiplatform
+    // Lets-Plot JVM
     implementation("org.jetbrains.lets-plot:lets-plot-common:$letsPlotVersion")
+    // Optional: contains the PlotImageExport utility which enables exporting to raster formats.
+    implementation("org.jetbrains.lets-plot:platf-awt:$letsPlotVersion")
 //    implementation("org.jetbrains.lets-plot:canvas:$letsPlotVersion")
 //    implementation("org.jetbrains.lets-plot:plot-raster:$letsPlotVersion")
 //    // Lets-Plot 'image export' (optional - enables exporting to raster formats)
