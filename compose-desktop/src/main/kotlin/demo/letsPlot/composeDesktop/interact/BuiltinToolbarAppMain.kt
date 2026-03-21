@@ -3,7 +3,7 @@
  * Use of this source code is governed by the MIT license that can be found in the LICENSE file.
  */
 
-package demo.letsPlot.composeDesktop.ggtb
+package demo.letsPlot.composeDesktop.interact
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
