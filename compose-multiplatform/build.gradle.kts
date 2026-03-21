@@ -41,8 +41,6 @@ kotlin {
                 implementation("org.jetbrains.lets-plot:lets-plot-kotlin-kernel:$letsPlotKotlinVersion")
                 // Lets-Plot Multiplatform
                 implementation("org.jetbrains.lets-plot:lets-plot-common:$letsPlotVersion")
-                implementation("org.jetbrains.lets-plot:canvas:$letsPlotVersion")
-                implementation("org.jetbrains.lets-plot:plot-raster:$letsPlotVersion")
                 // Lets-Plot Compose UI
                 implementation("org.jetbrains.lets-plot:lets-plot-compose:$letsPlotComposeVersion")
             }
