@@ -47,6 +47,7 @@ android {
     }
 }
 
+val androidComposeBom = extra["androidx.compose.bom"] as String
 val androidxActivityCompose = extra["androidx.activity.compose"] as String
 
 val letsPlotVersion = extra["letsPlot.version"] as String
@@ -54,10 +55,11 @@ val letsPlotKotlinVersion = extra["letsPlotKotlin.version"] as String
 val letsPlotComposeVersion = extra["letsPlotCompose.version"] as String
 
 dependencies {
-    implementation(compose.runtime)
-    implementation(compose.foundation)
-    implementation(compose.material)
-    implementation(compose.ui)
+    implementation(platform("androidx.compose:compose-bom:$androidComposeBom"))
+    implementation("androidx.compose.runtime:runtime")
+    implementation("androidx.compose.foundation:foundation")
+    implementation("androidx.compose.material:material")
+    implementation("androidx.compose.ui:ui")
     implementation("androidx.activity:activity-compose:$androidxActivityCompose")
 
     // Lets-Plot Kotlin API

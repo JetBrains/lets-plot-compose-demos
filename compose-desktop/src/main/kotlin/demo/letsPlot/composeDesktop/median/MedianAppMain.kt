@@ -20,7 +20,9 @@ import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import demo.letsPlot.composeDesktop.median.ui.DemoList
 import demo.letsPlot.composeDesktop.median.util.createFigures
+import org.jetbrains.letsPlot.compose.PlotFigureModel
 import org.jetbrains.letsPlot.compose.PlotPanel
+import org.jetbrains.letsPlot.compose.sandbox.SandboxToolbarCmp
 
 fun main() = application {
     Window(onCloseRequest = ::exitApplication, title = "Lets-Plot in Compose Desktop (median)") {
@@ -29,6 +31,7 @@ fun main() = application {
 
         val preserveAspectRatio = remember { mutableStateOf(false) }
         val figureIndex = remember { mutableStateOf(0) }
+        val figureModel = remember { PlotFigureModel() }
 
         MaterialTheme {
             Row {
@@ -55,12 +58,19 @@ fun main() = application {
                 Column(
                     modifier = Modifier.fillMaxSize().padding(start = 10.dp, top = 10.dp, end = 10.dp, bottom = 10.dp),
                 ) {
+                    // Sandbox toolbar - stays fixed while plots switch
+                    SandboxToolbarCmp(
+                        figureModel = figureModel,
+                        modifier = Modifier.fillMaxWidth()
+                    )
+
                     Column(
                         modifier = Modifier.fillMaxSize()
                             .padding(start = 10.dp, top = 10.dp, end = 10.dp, bottom = 10.dp),
                     ) {
                         PlotPanel(
                             figure = figures[figureIndex.value].second,
+                            figureModel = figureModel,
                             preserveAspectRatio = preserveAspectRatio.value,
                             modifier = Modifier.fillMaxSize()
                         ) { computationMessages ->
