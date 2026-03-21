@@ -61,7 +61,9 @@ kotlin {
                 implementation(compose.desktop.currentOs)
                 implementation("org.jetbrains.compose.components:components-resources:$composeVersion")
 
+                // Optional: contains the PlotImageExport utility which enables exporting to raster formats.
                 implementation("org.jetbrains.lets-plot:platf-awt:$letsPlotVersion")
+
                 implementation("org.slf4j:slf4j-simple:2.0.17")
             }
         }
