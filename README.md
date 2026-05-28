@@ -17,6 +17,17 @@ To run a Compose Desktop demo in IntelliJ IDEA, navigate to a `<demo name>AppMai
 folder and select "`Run <app>`" from the context menu.
 
 
+## WasmJS
+
+The WasmJS demo is located in the
+[compose-multiplatform/src/wasmJsMain](https://github.com/JetBrains/lets-plot-compose-demos/tree/main/compose-multiplatform/src/wasmJsMain/kotlin/demo/letsPlot)
+folder. Unlike the Desktop demo, run it in the browser using the Gradle command:
+
+```shell
+./gradlew compose-multiplatform:wasmJsBrowserDevelopmentRun
+```
+
+
 ## Android (in IntelliJ IDEA)
 
 ### Setting up the Environment

@@ -58,8 +58,6 @@ kotlin {
 
                 // Lets-Plot Kotlin API
                 implementation("org.jetbrains.lets-plot:lets-plot-kotlin:$letsPlotKotlinVersion")
-                // Lets-Plot Multiplatform
-                implementation("org.jetbrains.lets-plot:lets-plot-common:$letsPlotVersion")
                 // Lets-Plot Compose UI
                 implementation("org.jetbrains.lets-plot:lets-plot-compose:$letsPlotComposeVersion")
             }

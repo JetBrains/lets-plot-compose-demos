@@ -19,9 +19,7 @@ dependencies {
     implementation("org.jetbrains.compose.components:components-resources:$composeVersion")
 
     // Lets-Plot Kotlin API
-    implementation("org.jetbrains.lets-plot:lets-plot-kotlin-kernel:$letsPlotKotlinVersion")
-    // Lets-Plot JVM
-    implementation("org.jetbrains.lets-plot:lets-plot-common:$letsPlotVersion")
+    implementation("org.jetbrains.lets-plot:lets-plot-kotlin:$letsPlotKotlinVersion")
     // Optional: contains the PlotImageExport utility which enables exporting to raster formats.
     implementation("org.jetbrains.lets-plot:platf-awt:$letsPlotVersion")
     // Lets-Plot Compose UI
