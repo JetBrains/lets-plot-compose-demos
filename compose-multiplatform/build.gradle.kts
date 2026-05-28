@@ -1,4 +1,13 @@
 /*
+ * Copyright (c) 2026. JetBrains s.r.o.
+ * Use of this source code is governed by the MIT license that can be found in the LICENSE file.
+ */
+
+@file:OptIn(ExperimentalWasmDsl::class)
+
+import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
+
+/*
  * Copyright (c) 2025 JetBrains s.r.o.
  * Use of this source code is governed by the MIT license that can be found in the LICENSE file.
  */
@@ -29,6 +38,16 @@ kotlin {
         }
     }
 
+    wasmJs() {
+        outputModuleName = "composeMultiplatformApp"
+        browser {
+            commonWebpackConfig {
+                outputFileName = "composeMultiplatformApp.js"
+            }
+        }
+        binaries.executable()
+    }
+
     sourceSets {
         val commonMain by getting {
             dependencies {
@@ -38,7 +57,7 @@ kotlin {
                 implementation("org.jetbrains.compose.ui:ui:$composeVersion")
 
                 // Lets-Plot Kotlin API
-                implementation("org.jetbrains.lets-plot:lets-plot-kotlin-kernel:$letsPlotKotlinVersion")
+                implementation("org.jetbrains.lets-plot:lets-plot-kotlin:$letsPlotKotlinVersion")
                 // Lets-Plot Multiplatform
                 implementation("org.jetbrains.lets-plot:lets-plot-common:$letsPlotVersion")
                 // Lets-Plot Compose UI

@@ -15,3 +15,5 @@
 **/jniLibs
 
 local.properties
+/.gradle-user/
+/kotlin-js-store/
